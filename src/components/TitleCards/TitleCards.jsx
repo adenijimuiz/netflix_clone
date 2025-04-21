@@ -2,6 +2,7 @@ import React, { useEffect, useRef} from 'react'
 import './titlecards.css'
 import UseFetch from '../custom_hook/useFetch';
 import netflix_spinner from '../../assets/netflix_spinner.gif'
+import { Link } from 'react-router-dom';
 // import cards_data from '../../assets/cards/Cards_data'
 
 function TitleCards({title, category}) {
@@ -34,7 +35,13 @@ function TitleCards({title, category}) {
       cardsEl.addEventListener('wheel', handleWheel, { passive: false });
     }
 
-  }, [category]);
+    return () => {
+      if (cardsEl) {
+        cardsEl.removeEventListener('wheel', handleWheel);
+      }
+    };
+
+  }, []);
 
   return (
     <>
@@ -45,13 +52,14 @@ function TitleCards({title, category}) {
       <h2>{title ? title : 'Popular on Netflix'}</h2>
       <div className="card-list" ref={cardsRef}>
         {apiData.map((card, index) => {
-          return <div className="card" key={index}>
+          return <Link to={`/player/${card.id}`} className="card" key={index}>
             <img src={`https://image.tmdb.org/t/p/w500` + card.backdrop_path} alt="image" />
             <p>{card.original_title
             }</p>
-          </div>
+          </Link>
         })}
       </div>
+      
     </div>}
     </>
   )

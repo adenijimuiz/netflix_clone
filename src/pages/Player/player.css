@@ -4,9 +4,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* overflow-x: hidden; */
 }
 
-.player img{
+.player .back_arrow{
   position: absolute;
   top: 20px;
   left: 20px;
@@ -25,4 +26,21 @@
   align-items: center;
   justify-content: space-between;
   width: 90%;
+}
+
+.error{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message{
+  position: absolute;
+  text-align: center;
+}
+
+img.spinner{
+  max-width: 960px;
+  height: 90vh;
+  width: auto;
 }
