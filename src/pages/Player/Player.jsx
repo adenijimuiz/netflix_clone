@@ -18,7 +18,6 @@ function Player() {
   const {apiData, isPending, error} = Usefetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options);
 
   const video = apiData?.[0]
-
   return (
     <>
       <div className='player'>
@@ -30,7 +29,7 @@ function Player() {
       {!isPending && !error && !video && <p>No video found.</p>}
 
       {video && (<>
-      <iframe src={`https://www.youtube.com/embed/${video.key}`} frameborder="0" allowFullScreen></iframe>
+      <iframe src={`https://www.youtube.com/embed/${video.key}`} frameBorder="0" allowFullScreen></iframe>
       <div className="player-info">
         <p>{video.published_at.slice(0, 10)}</p>
         <p>{video.name}</p>
