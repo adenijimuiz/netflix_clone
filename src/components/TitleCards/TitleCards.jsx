@@ -6,12 +6,13 @@ import { Link } from 'react-router-dom';
 // import cards_data from '../../assets/cards/Cards_data'
 
 function TitleCards({title, category}) {
+  const token = import.meta.env.VITE_TMDB_API_TOKEN;
 
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OWZiZjlmZGQ2NDE5M2MxODU2MDk1NTc2ODBmODE2MyIsIm5iZiI6MTc0NTE1NjUyNC41NzMsInN1YiI6IjY4MDRmOWFjNDIxYTMwOTc1Y2FhODdjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EAMhTuBjJvv_Dpq_GzHclLIHzU_ZUf5Hz6Mv3MrNkjE'
+      Authorization: `Bearer ${token}`
     }
   };
   const {apiData, isPending, error} = UseFetch(`https://api.themoviedb.org/3/movie/${category ? category : 'now_playing'}?language=en-US&page=1`, options);

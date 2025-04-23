@@ -8,11 +8,12 @@ import netflix_spinner from '../../assets/netflix_spinner.gif'
 function Player() {
   const {id} = useParams();
   const navigate  = useNavigate();
+  const token = import.meta.env.VITE_TMDB_API_TOKEN;
   const options = {
     method: 'GET',
     headers: {
       accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4OWZiZjlmZGQ2NDE5M2MxODU2MDk1NTc2ODBmODE2MyIsIm5iZiI6MTc0NTE1NjUyNC41NzMsInN1YiI6IjY4MDRmOWFjNDIxYTMwOTc1Y2FhODdjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EAMhTuBjJvv_Dpq_GzHclLIHzU_ZUf5Hz6Mv3MrNkjE'
+      Authorization: `Bearer ${token}`
     }
   };
   const {apiData, isPending, error} = Usefetch(`https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`, options);
