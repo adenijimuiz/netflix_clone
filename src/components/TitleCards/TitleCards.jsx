@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 
 function TitleCards({title, category}) {
   const token = import.meta.env.VITE_TMDB_API_TOKEN;
-
   const options = {
     method: 'GET',
     headers: {

@@ -3,12 +3,14 @@ import './player.css';
 import back_arrow_icon from '../../assets/back_arrow_icon.png'
 import { useNavigate, useParams } from 'react-router-dom';
 import Usefetch from '../../components/custom_hook/useFetch';
-import netflix_spinner from '../../assets/netflix_spinner.gif'
+import netflix_spinner from '../../assets/netflix_spinner.gif';
+import ReactPlayer from 'react-player';
 
 function Player() {
   const {id} = useParams();
   const navigate  = useNavigate();
   const token = import.meta.env.VITE_TMDB_API_TOKEN;
+
   const options = {
     method: 'GET',
     headers: {
@@ -30,7 +32,14 @@ function Player() {
       {!isPending && !error && !video && <p>No video found.</p>}
 
       {video && (<>
-      <iframe src={`https://www.youtube.com/embed/${video.key}`} frameBorder="0" allowFullScreen></iframe>
+      {/* <iframe src={`https://www.youtube.com/embed/${video.key}`} frameBorder="0" allowFullScreen></iframe> */}
+      {/* <ReactPlayer 
+        url={`https://www.youtube.com/${video.key}`}
+        controls
+        width="100%"
+        height="100%"
+        className="react-player"
+      /> */}
       <div className="player-info">
         <p>{video.published_at.slice(0, 10)}</p>
         <p>{video.name}</p>
